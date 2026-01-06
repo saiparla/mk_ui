@@ -471,10 +471,10 @@ const styleListView = () => {
         header.style.setProperty("color", "#fff", "important");
         header.style.setProperty("font-weight", "bold", "important");
         header.style.setProperty("border-radius", "4px", "important");
-        const levelright = header.querySelector('.level-right')
-        if (levelright) {
-            levelright.style.display = 'none'
-        }
+        // const levelright = header.querySelector('.level-right')
+        // if (levelright) {
+        //     levelright.style.display = 'none'
+        // }
     }
 
     const headerTexts = document.querySelectorAll(".list-row-head span, .list-row-head div");
@@ -493,10 +493,10 @@ const styleListView = () => {
     rows.forEach(row => {
         row.style.transition = "transform 0.15s ease, box-shadow 0.15s ease";
         row.style.borderRadius = "3px";
-        const levelright = row.querySelector('.level-right')
-        if (levelright) {
-            levelright.style.display = 'none'
-        }
+        // const levelright = row.querySelector('.level-right')
+        // if (levelright) {
+        //     levelright.style.display = 'none'
+        // }
 
         row.addEventListener("mouseenter", () => {
             row.style.transform = "scale(1.004)";

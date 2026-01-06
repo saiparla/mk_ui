@@ -446,13 +446,13 @@ use.like-icon {
     color: #fff;
     border-radius: 4px;
 
-    .level-right {
+    /* .level-right {
         display: none;
-    }
+    } */
 }
 
 .list-row {
-    .level-right {
+    /* .level-right {
         display: none;
-    }
+    } */
 }
