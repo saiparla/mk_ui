@@ -6,6 +6,17 @@ window.addEventListener("resize", function () {
     screenWidth = window.innerWidth;
 });
 
+(function loadAleoFont() {
+    if (document.getElementById('aleo-font')) return;
+
+    const link = document.createElement('link');
+    link.id = 'aleo-font';
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Aleo:wght@300;400;700;800&display=swap';
+
+    document.head.appendChild(link);
+})();
+
 
 const loginPage = () => {
     const main = document.querySelector(".container.my-4");
@@ -15,122 +26,72 @@ const loginPage = () => {
         signuptext.style.display = 'none'
     }
     if (login) {
-        login.style.background = '#fffdf7'
+        login.style.background =
+            "url('/assets/mk_ui/images/123.png') center / cover no-repeat";
+
     }
     if (main) {
-        main.style.backgroundColor = '#fffdf7'
+        main.style.backgroundColor = 'transparent'
     }
     const maincontainer = document.querySelector('.page_content');
     const loginFormContainer = document.querySelector('.page_content div');
     if (maincontainer) {
         maincontainer.style.alignContent = 'center';
-        maincontainer.style.height = screenWidth <= 500 ? '100vh' : '80vh';
+        maincontainer.style.height = screenWidth <= 500 ? '100vh' : '100vh';
 
 
         if (loginFormContainer) {
             loginFormContainer.style.width = '100%';
-            loginFormContainer.style.margin = 'auto';
             loginFormContainer.style.padding = '0px';
             const loginCard = loginFormContainer.querySelector('.for-login');
             if (loginCard) {
                 loginCard.style.display = 'flex';
                 loginCard.style.width = '100%';
                 loginCard.style.borderRadius = '8px';
+                loginCard.style.margin = screenWidth < 500 && '40px auto';
                 loginCard.style.padding = '0px';
-                loginCard.style.justifyContent = 'space-between';
+                loginCard.style.justifyContent = 'center';
                 loginCard.style.flexDirection = screenWidth <= 500 ? 'column' : 'row';
-                loginCard.style.marginTop = screenWidth <= 500 ? '-280px' : '0px';
-                // loginCard.style.boxShadow = screenWidth <= 500 ? '0px' : '0px 0px 5px grey';
+
 
                 const pagecardHead = loginCard.querySelector('.page-card-head');
                 if (pagecardHead) {
-
-                    // pagecardHead.style.width = screenWidth <= 500 ? '100%' : '50%';
-                    // pagecardHead.style.maxWidth = '400px';
-                    // pagecardHead.style.flex = '1';
-                    pagecardHead.style.display = 'flex';
-                    pagecardHead.style.justifyContent = screenWidth <= 500 ? 'start' : 'center';
-                    pagecardHead.style.flexDirection = 'column';
-                    pagecardHead.style.textAlign = 'center';
-                    pagecardHead.style.color = '#007e85';
-                    // pagecardHead.style.backgroundColor = screenWidth <= 500 ? 'transparent' : '#f4f9fcff'
-                    // pagecardHead.style.borderRadius = screenWidth <= 500 ? '0px' : '10px  0px 0px 10px'
-                    pagecardHead.style.marginTop = screenWidth <= 500 ? '-10px' : '0px'
-
-                    const applogo = pagecardHead.querySelector('.app-logo')
-                    if (applogo) {
-                        applogo.style.display = 'none'
-                    }
-                    const welcomeText = pagecardHead.querySelector('h4')
-                    if (welcomeText) {
-                        welcomeText.innerHTML = 'Welcome Back!'
-                        welcomeText.style.fontSize = '28px'
-                        welcomeText.style.fontWeight = '800'
-                        welcomeText.style.margin = '0px 0px 0px'
-                        welcomeText.style.fontFamily = 'times'
-
-
-                        const manImage = document.createElement('img');
-                        manImage.src = '/assets/mk_ui/images/mk_logo.png';
-                        manImage.style.height = screenWidth <= 500 ? '100px' : '165px';
-                        manImage.style.marginBottom = '15px';
-                        manImage.style.marginTop = '30px';
-                        // manImage.style.filter = 'drop-shadow(0px 0px 4px grey)';
-                        manImage.style.display = 'block';
-                        manImage.style.margin = '30px auto 15px';
-                        manImage.style.flexShrink = '0';
-                        manImage.style.maxWidth = '165px';
-                        pagecardHead.append(manImage)
-
-                        const paraText = document.createElement('p');
-                        paraText.innerHTML = 'Log in and take control.';
-                        paraText.style.fontSize = '12px'
-                        paraText.style.margin = '0px'
-                        paraText.style.lineHeight = '2'
-                        paraText.style.color = '#007e85';
-
-                        pagecardHead.append(paraText);
-
-
-
-
-
-                    }
+                    pagecardHead.style.display = 'none';
                 }
                 const formContent = loginCard.querySelector('.login-content.page-card');
                 const loginBox = formContent.querySelector('.form-signin.form-login')
                 if (formContent) {
-                    // formContent.style.flex = '1';
-                    // formContent.style.width = screenWidth <= 500 ? '100%' : '50%';
+                    formContent.style.width = screenWidth <= 500 && '90%';
                     formContent.style.minWidth = '300px';
                     formContent.style.display = 'flex';
+                    formContent.style.position = 'absolute';
+                    formContent.style.marginLeft = screenWidth > 500 && '63%';
                     formContent.style.justifyContent = 'center';
                     formContent.style.flexDirection = 'column';
                     formContent.style.textAlign = 'center';
-                    formContent.style.backgroundColor = '#fff';
+                    formContent.style.background = screenWidth < 500 ?
+                        "linear-gradient(rgba(95, 93, 93, 0.5), rgba(0,0,0,0.5))" : 'transparent';
                     formContent.style.border = 'none';
-                    formContent.style.padding = screenWidth <= 500 ? '5px' : '30px';
-                    formContent.style.borderRadius = screenWidth <= 500 ? '5px' : '10px';
-                    formContent.style.boxShadow = screenWidth <= 500 ? '0px 0px 5px grey' : '0px 0px 5px grey';
-                    // formContent.style.marginTop = screenWidth <= 500 ? '-10px' : '0px';
+                    formContent.style.marginTop = screenWidth <= 500 ? '-50%' : '-17%';
 
                     const mklogo = document.createElement('img');
                     mklogo.src = '/assets/mk_ui/images/mk_logo.png';
                     mklogo.style.width = screenWidth <= 500 ? '130px' : '170px';
                     mklogo.style.display = 'block';
+                    mklogo.style.padding = '10px';
+                    mklogo.style.background = '#fff';
+                    mklogo.style.borderRadius = '5px';
                     mklogo.style.margin = screenWidth <= 500 ? '20px auto auto auto' : 'auto';
                     if (loginBox) {
                         formContent.insertBefore(mklogo, loginBox);
                         loginBox.style.marginTop = '30px'
-                        // loginBox.style.width = screenWidth <= 500 ? '100%' : '300px'
                         const pagecardbody = loginBox.querySelector('.page-card-body')
                         const pagecardbodysecondary = pagecardbody.querySelector('.page-card-body');
                         const loginbutton = pagecardbody.querySelector('.page-card-actions button');
                         const poweredby = pagecardbody.querySelector('.social-logins.text-center');
                         if (loginbutton) {
-                            loginbutton.style.backgroundColor = '#007e85';
+                            loginbutton.style.background = '#007e85';
                             loginbutton.style.borderRadius = '5px';
-                            loginbutton.style.boxShadow = '0px 0px 5px grey';
 
                             loginbutton.addEventListener('mouseover', () => {
                                 loginbutton.style.backgroundColor = '#956438';
@@ -144,81 +105,164 @@ const loginPage = () => {
                             poweredby.innerHTML = `
                                               <footer>
                                                        Powered by 
-                                                      <a href="https://hippoclouds.com/" target="_blank">HippoCloud</a>
+                                                      <a href="https://hippoclouds.com/" target="_blank"><span style='color : #017bcf;'>hippo</span><span style='color : #fc3f19d8;'>cloud<span></a>
                                                  </footer>
                                                 `;
-                            poweredby.style.color = '#666'
+                            poweredby.style.color = screenWidth < 500 ? '#fff' : '#525252'
                             poweredby.style.fontSize = '14px';
-                            poweredby.style.fontWeight = '700';
+                            poweredby.style.fontWeight = '400';
                             poweredby.style.paddingTop = '10px';
-                            poweredby.style.opacity = '0.5';
+                            poweredby.style.opacity = '1';
                             const hippotext = poweredby.querySelector('a')
                             {
                                 if (hippotext) {
-                                    hippotext.style.color = '#007e85';
                                     hippotext.style.transition = '200ms';
-
-                                    poweredby.addEventListener('mouseover', () => {
-
-                                        poweredby.style.opacity = '1';
-                                    })
-                                    poweredby.addEventListener('mouseout', () => {
-
-                                        poweredby.style.opacity = '0.5';
-                                    })
+                                    hippotext.style.fontStyle = 'italic';
+                                    hippotext.style.fontSize = '15px';
+                                    hippotext.style.textDecoration = 'none';
+                                    hippotext.style.fontFamily = 'Aleo';
+                                    hippotext.style.fontWeight = '700';
                                 }
                             }
                         }
                         if (pagecardbody) {
                             pagecardbody.style.gap = '20px';
-                            // pagecardbodysecondary.style.display = 'none'
+
                             if (pagecardbodysecondary) {
                                 const emailfield = pagecardbodysecondary.querySelector('.form-group .email-field');
                                 const passwordfield = pagecardbodysecondary.querySelector('.form-group .password-field');
                                 const forgot = pagecardbodysecondary.querySelector('.forgot-password-message a');
 
                                 if (emailfield) {
-                                    const emailinputfiled = emailfield.querySelector('input');
-                                    const emailinputfiledsvg = emailfield.querySelector('svg');
-                                    if (emailfield) {
-                                        emailinputfiled.style.backgroundColor = '#ffff'
-                                        emailfield.style.border = 'none'
-                                        emailfield.style.height = '30px'
-                                        emailfield.style.borderRadius = '5px'
-                                        emailfield.style.boxShadow = '0px 0px 5px grey';
+                                    const emailInputField = emailfield.querySelector('input');
+                                    const emailInputFieldSvg = emailfield.querySelector('svg');
+
+                                    if (emailInputField) {
+                                        emailInputField.style.background = 'transparent';
+                                        emailfield.style.border = 'none';
+                                        emailfield.style.background = 'transparent';
+                                        emailfield.style.height = '30px';
+                                        emailfield.style.borderRadius = '5px';
                                         emailfield.style.marginBottom = '20px';
-                                        if (emailinputfiledsvg) {
-                                            emailinputfiledsvg.style.marginTop = '2px';
-                                            emailinputfiled.placeholder = 'Add your email here'
 
-                                        }
+                                        emailInputField.placeholder = 'Add your email here';
+
+                                        emailInputField.classList.add('email-placeholder');
+
+                                        const style = document.createElement('style');
+                                        style.textContent = `
+                                                    .email-placeholder::placeholder {
+                                                        opacity : 0.8;
+                                                        color : #888;
+                                                        font-size : 13px
+                                                    `;
+                                        document.head.appendChild(style);
                                     }
+
+                                    if (emailInputFieldSvg) {
+                                        emailInputFieldSvg.remove();
+                                    }
+
+                                    const img = document.createElement('img');
+                                    img.src = '/assets/mk_ui/images/envelope.svg';
+                                    img.style.position = 'absolute';
+                                    img.style.left = '8px';
+                                    img.style.top = '48%';
+                                    img.style.transform = 'translateY(-50%)';
+                                    img.style.width = '20px';
+                                    img.style.height = '20px';
+                                    img.style.pointerEvents = 'none';
+
+                                    emailfield.appendChild(img);
                                 }
+
+
+
+
                                 if (passwordfield) {
-                                    const passowordinputfiled = passwordfield.querySelector('input');
-                                    const passowordinputfiledsvg = passwordfield.querySelector('svg');
-                                    if (passwordfield) {
-                                        passowordinputfiled.style.backgroundColor = '#ffff'
-                                        passwordfield.style.border = 'none'
-                                        passwordfield.style.height = '30px'
-                                        passwordfield.style.borderRadius = '5px'
-                                        passwordfield.style.boxShadow = '0px 0px 5px grey';
-                                        if (passowordinputfiledsvg) {
-                                            passowordinputfiled.placeholder = 'Add your password here';
-                                            passowordinputfiledsvg.style.marginTop = '2px';
+                                    const passwordInputField = passwordfield.querySelector('input');
+                                    const toggleSpan = passwordfield.querySelector('.toggle-password');
+                                    const passwordInputFieldSvg = passwordfield.querySelector('svg');
 
-                                        }
+                                    passwordfield.style.position = 'relative';
+
+                                    if (passwordInputField) {
+                                        passwordInputField.style.background = 'transparent';
+                                        passwordInputField.style.paddingLeft = '35px';
+                                        passwordInputField.style.paddingRight = '40px';
+
+                                        passwordfield.style.backgroundColor = 'transparent';
+                                        passwordfield.style.border = 'none';
+                                        passwordfield.style.height = '30px';
+                                        passwordfield.style.borderRadius = '5px';
+
+                                        passwordInputField.placeholder = 'Add password here';
+                                        passwordInputField.classList.add('password-placeholder');
+
+                                        const style = document.createElement('style');
+                                        style.textContent = `
+                                                            .password-placeholder::placeholder {
+                                                                opacity: 0.8;
+                                                                color: #888;
+                                                                font-size: 13px;
+                                                            }
+                                                        `;
+                                        document.head.appendChild(style);
+                                    }
+
+                                    if (passwordInputFieldSvg) {
+                                        passwordInputFieldSvg.remove();
+                                    }
+                                    const lockImg = document.createElement('img');
+                                    lockImg.src = '/assets/mk_ui/images/padlock.png';
+                                    lockImg.style.position = 'absolute';
+                                    lockImg.style.left = '8px';
+                                    lockImg.style.top = '50%';
+                                    lockImg.style.transform = 'translateY(-50%)';
+                                    lockImg.style.width = '18px';
+                                    lockImg.style.height = '18px';
+                                    lockImg.style.pointerEvents = 'none';
+
+                                    passwordfield.appendChild(lockImg);
+
+                                    if (toggleSpan) {
+                                        toggleSpan.remove();
+
+                                        const eyeImg = document.createElement('img');
+                                        eyeImg.src = '/assets/mk_ui/images/eye-regular.svg';
+                                        eyeImg.style.position = 'absolute';
+                                        eyeImg.style.right = '10px';
+                                        eyeImg.style.top = '50%';
+                                        eyeImg.style.transform = 'translateY(-50%)';
+                                        eyeImg.style.width = '18px';
+                                        eyeImg.style.height = '18px';
+                                        eyeImg.style.cursor = 'pointer';
+
+                                        eyeImg.addEventListener('click', () => {
+                                            if (passwordInputField.type === 'password') {
+                                                passwordInputField.type = 'text';
+                                                eyeImg.src = '/assets/mk_ui/images/eye-slash.svg';
+                                            } else {
+                                                passwordInputField.type = 'password';
+                                                eyeImg.src = '/assets/mk_ui/images/eye-regular.svg';
+                                            }
+                                        });
+
+                                        passwordfield.appendChild(eyeImg);
                                     }
                                 }
+
+
                                 if (forgot) {
                                     forgot.style.transition = '200ms';
-                                    forgot.style.color = '#525252';
+                                    forgot.style.color = screenWidth < 500 ? '#fff' : '#525252';
+                                    forgot.style.fontSize = '14px';
 
                                     forgot.addEventListener('mouseover', () => {
-                                        forgot.style.color = '#007e85';
+                                        forgot.style.textDecoration = 'solid underline';
                                     })
                                     forgot.addEventListener('mouseout', () => {
-                                        forgot.style.color = '#525252';
+                                        forgot.style.textDecoration = 'none';
                                     })
                                 }
 
@@ -242,89 +286,51 @@ const forgotPage = () => {
     const loginFormContainer = document.querySelector('.page_content div');
     if (maincontainer) {
         maincontainer.style.alignContent = 'center';
-        maincontainer.style.height = screenWidth <= 500 ? '100vh' : '80vh';
+        maincontainer.style.height = screenWidth <= 500 ? '100vh' : '100vh';
 
         const ForgotCard = loginFormContainer.querySelector('.for-forgot');
         if (ForgotCard) {
+            const navbar = document.querySelector('.navbar.navbar-light.navbar-expand-lg');
+            if (navbar) {
+                navbar.style.display = 'none'
+            }
             ForgotCard.style.display = 'flex';
             ForgotCard.style.width = '100%';
             ForgotCard.style.borderRadius = '8px';
             ForgotCard.style.padding = '0px';
-            ForgotCard.style.justifyContent = screenWidth <= 500 ? 'center' : 'space-between';
+            ForgotCard.style.margin = screenWidth < 500 && '40px auto';
+            ForgotCard.style.justifyContent = 'center';
             ForgotCard.style.flexDirection = screenWidth <= 500 ? 'column' : 'row';
-            // ForgotCard.style.boxShadow = screenWidth <= 500 ? 'none' : '0px 0px 5px grey';
-            ForgotCard.style.marginTop = screenWidth <= 500 ? '-280px' : '0px 0px 5px grey';
+
 
             const pagecardHead = ForgotCard.querySelector('.page-card-head');
             if (pagecardHead) {
-
-                // pagecardHead.style.width = screenWidth <= 500 ? '100%' : '50%';
-                // pagecardHead.style.maxWidth = '450px';
-                // pagecardHead.style.flex = '1';
-                pagecardHead.style.display = 'flex';
-                pagecardHead.style.justifyContent = 'center';
-                pagecardHead.style.flexDirection = 'column';
-                pagecardHead.style.textAlign = 'center';
-                pagecardHead.style.color = '#007e85';
-                // pagecardHead.style.backgroundColor = screenWidth <= 500 ? 'transparent' : '#f4f9fcff'
-                // pagecardHead.style.borderRadius = screenWidth <= 500 ? '0px' : '10px 0px 0px 10px'
-
-                const applogo = pagecardHead.querySelector('.app-logo')
-                if (applogo) {
-                    applogo.style.display = 'none'
-                }
-                const welcomeText = pagecardHead.querySelector('h4')
-                if (welcomeText) {
-                    welcomeText.innerHTML = 'Forgot password?'
-                    welcomeText.style.fontSize = '28px'
-                    welcomeText.style.fontWeight = '800'
-                    welcomeText.style.margin = '0px 0px 0px'
-                    welcomeText.style.fontFamily = 'times'
-                    const manImage = document.createElement('img');
-                    manImage.src = '/assets/mk_ui/images/mk_logo.png';
-                    manImage.style.height = screenWidth <= 500 ? '200px' : '250px';
-                    // manImage.style.filter = 'drop-shadow(0px 0px 4px grey)';
-                    manImage.style.display = 'block';
-                    manImage.style.margin = '0px auto 15px';
-                    manImage.style.flexShrink = '0';
-                    manImage.style.minWidth = '165px';
-                    pagecardHead.append(manImage)
-
-                    const paraText = document.createElement('p');
-                    paraText.innerHTML = 'Kindly proceed to the password reset page.';
-                    paraText.style.fontSize = '12px'
-                    paraText.style.margin = '0px'
-                    paraText.style.marginTop = '10px'
-                    // paraText.style.lineHeight = '2'
-                    paraText.style.color = '#007e85';
-
-                    pagecardHead.append(paraText);
-
-
-
-
-
-                }
+                pagecardHead.style.display = 'none';
             }
             const formContent = ForgotCard.querySelector('.login-content.page-card');
             const forgotBox = formContent.querySelector('.form-signin.form-forgot')
             if (formContent) {
-                // formContent.style.flex = '1';
-                // formContent.style.width = screenWidth <= 500 ? '100%' : '50%';
-                // formContent.style.maxWidth = '500px';
+
+                formContent.style.width = screenWidth <= 500 && '90%';
+                formContent.style.minWidth = '300px';
                 formContent.style.display = 'flex';
+                formContent.style.position = 'absolute';
+                formContent.style.marginLeft = screenWidth > 500 && '63%';
                 formContent.style.justifyContent = 'center';
                 formContent.style.flexDirection = 'column';
                 formContent.style.textAlign = 'center';
-                formContent.style.backgroundColor = '#fff';
-                formContent.style.borderRadius = screenWidth <= 500 ? '8px' : '0px 10px 10px 0px';
-                formContent.style.boxShadow = screenWidth <= 500 ? '0px 0px 5px  grey' : 'none';
-                formContent.style.padding = screenWidth <= 500 ? '10px ' : '30px';
+                formContent.style.background = screenWidth < 500 ?
+                    "linear-gradient(rgba(95, 93, 93, 0.5), rgba(0,0,0,0.5))" : 'transparent';
+                formContent.style.border = 'none';
+                formContent.style.marginTop = screenWidth <= 500 ? '-50%' : '-17%';
 
                 const mklogo = document.createElement('img');
                 mklogo.src = '/assets/mk_ui/images/mk_logo.png';
                 mklogo.style.width = screenWidth <= 500 ? '140px' : '170px';
                 mklogo.style.display = 'block';
+                mklogo.style.padding = '10px';
+                mklogo.style.borderRadius = '5px';
+                mklogo.style.background = '#fff';
                 mklogo.style.margin = '0px auto 0px';
                 if (forgotBox) {
                     formContent.insertBefore(mklogo, forgotBox);
@@ -334,36 +340,36 @@ const forgotPage = () => {
                     const forgotButtonDiv = forgotBox.querySelector('.page-card-actions');
                     const forgotButton = forgotBox.querySelector('.page-card-actions button');
                     const loginText = forgotBox.querySelector('.text-center.sign-up-message a');
-                    // const poweredby = pagecardbody.querySelector('.social-logins.text-center');
+
                     if (loginText) {
-                        loginText.style.color = '#525252';
+                        loginText.style.color = screenWidth < 500 ? '#fff' : '#525252';
                         loginText.style.transition = '200ms';
                         loginText.style.display = '200ms';
 
-                        loginText.addEventListener('mouseover', () => {
-                            loginText.style.color = '#007e85';
-                        });
-                        loginText.addEventListener('mouseout', () => {
-                            loginText.style.color = '#525252';
-                        })
+
                         const poweredby = document.createElement('footer')
 
                         poweredby.innerHTML = '';
                         poweredby.innerHTML = `
-                                           
+                                             <footer>
                                                        Powered by 
-                                                      <a href="https://hippoclouds.com/" target="_blank">HippoCloud</a>
+                                                      <a href="https://hippoclouds.com/" target="_blank"><span style='color : #017bcf;'>hippo</span><span style='color : #fc3f19d8;'>cloud</a>
+                                                 </footer>
                                                 `;
-                        poweredby.style.color = '#666'
-                        poweredby.style.fontSize = '14px';
-                        poweredby.style.fontWeight = '700';
+                        poweredby.style.color = screenWidth < 500 ? '#fff' : '#525252'
+                        poweredby.style.fontSize = '15px';
                         poweredby.style.paddingTop = '10px';
-                        poweredby.style.opacity = '0.5';
+                        poweredby.style.opacity = '1';
                         const hippotext = poweredby.querySelector('a')
                         {
                             if (hippotext) {
-                                hippotext.style.color = '#007e85';
+                                hippotext.style.color = '#fff';
                                 hippotext.style.transition = '200ms';
+                                hippotext.style.textDecoration = 'none';
+                                hippotext.style.fontStyle = 'italic';
+                                hippotext.style.fontSize = '15px';
+                                hippotext.style.fontFamily = 'Aleo';
+                                hippotext.style.fontWeight = '700';
 
                                 poweredby.addEventListener('mouseover', () => {
 
@@ -371,13 +377,12 @@ const forgotPage = () => {
                                 })
                                 poweredby.addEventListener('mouseout', () => {
 
-                                    poweredby.style.opacity = '0.5';
+                                    poweredby.style.opacity = '1';
                                 })
                             }
                         }
                         forgotButtonDiv.appendChild(poweredby)
                     }
-                    // forgotButton.append(poweredby)
 
                     if (pagecardbody) {
 
@@ -392,12 +397,36 @@ const forgotPage = () => {
                                 emailfield.style.border = 'none'
                                 emailfield.style.height = '30px'
                                 emailfield.style.borderRadius = '5px'
-                                emailfield.style.boxShadow = '0px 0px 5px grey';
                                 emailfield.style.marginBottom = '20px';
                                 if (emailinputfiledsvg) {
-                                    emailinputfiledsvg.style.marginTop = '1px';
+                                    emailinputfiledsvg.style.marginTop = '-2px';
                                     emailinputfiled.placeholder = 'Add your email here'
+                                    emailinputfiled.classList.add('email-placeholder');
 
+                                    const style = document.createElement('style');
+                                    style.textContent = `
+                                                    .email-placeholder::placeholder {
+                                                        opacity : 0.8;
+                                                        color : #888;
+                                                        font-size : 13px
+                                                    `;
+                                    document.head.appendChild(style);
+
+                                    if (emailinputfiledsvg) {
+                                        emailinputfiledsvg.remove();
+                                    }
+
+                                    const img = document.createElement('img');
+                                    img.src = '/assets/mk_ui/images/envelope.svg';
+                                    img.style.position = 'absolute';
+                                    img.style.left = '8px';
+                                    img.style.top = '48%';
+                                    img.style.transform = 'translateY(-50%)';
+                                    img.style.width = '20px';
+                                    img.style.height = '20px';
+                                    img.style.pointerEvents = 'none';
+
+                                    emailfield.appendChild(img);
                                 }
                             }
                         }
@@ -420,6 +449,10 @@ const forgotPage = () => {
                         })
                     }
 
+
+
+
+
                 }
 
 
@@ -428,6 +461,7 @@ const forgotPage = () => {
         }
     }
 }
+
 
 loginPage();
 forgotPage();

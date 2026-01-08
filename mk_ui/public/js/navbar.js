@@ -37,10 +37,17 @@ const preloginNavbar = () => {
     }
     const navbar = document.querySelector('.navbar.navbar-light.navbar-expand-lg');
     if (navbar) {
-        navbar.style.background = 'linear-gradient(90deg,#007e85 0%,#007e85dc 30%,#007e85d8 60%,#007e85dc 80%,#007e85 100%)'
+        navbar.style.background = 'linear-gradient(90deg,#16465af5 0%,#007e85dc 30%,#236986 60%,#16465af5 80%,#236986 100%)'
+        navbar.style.background = "url('/assets/mk_ui/images/123.png') no-repeat";
+        navbar.style.background = "#135770";
+        navbar.style.backgroundPosition = "top ";
+        navbar.style.backgroundSize = "800%";
+        // navbar.style.backdropFilter = "blur(30px)";
         navbar.style.border = 'none';
         navbar.style.boxShadow = '0px 2px 5px #5252'
         navbar.style.height = '55px'
+        // navbar.style.boxShadow = '0 12px 25px -10px rgba(0,0,0,0.6)';
+
 
         const logo = navbar.querySelector('.navbar-brand')
         if (navbar) {

@@ -4,7 +4,7 @@ const sortselection = () => {
     if (!filterflex) return;
 
     const filterselectors = filterflex.querySelectorAll('.sort-selector');
-    if (filterselectors.length === 0) return;
+    if (!filterselectors.length) return;
 
     filterselectors.forEach(selector => {
         const orderButton = selector.querySelector('.btn-order');
@@ -105,14 +105,14 @@ const sortselection = () => {
 
         updateSortIcon();
 
-        if (!orderButton.dataset.listenerAttached) {
-            orderButton.addEventListener('click', () => {
-                orderButton.dataset.sortState = orderButton.dataset.sortState === 'asc' ? 'desc' : 'asc';
+        // if (!orderButton.dataset.listenerAttached) {
+        //     orderButton.addEventListener('click', () => {
+        //         orderButton.dataset.sortState = orderButton.dataset.sortState === 'asc' ? 'desc' : 'asc';
 
-                updateSortIcon();
-            });
-            orderButton.dataset.listenerAttached = 'true';
-        }
+        //         updateSortIcon();
+        //     });
+        //     orderButton.dataset.listenerAttached = 'true';
+        // }
     });
 };
 
@@ -129,7 +129,7 @@ const filterselection = () => {
     if (!filterflex) return;
 
     const filterselectors = filterflex.querySelector('.filter-selector');
-    if (filterselectors.length === 0) return;
+    if (!filterselectors.length) return;
 
     const buttongroup = filterselectors.querySelector('.btn-group');
     if (!buttongroup) return;

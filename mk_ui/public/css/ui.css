@@ -69,7 +69,8 @@
 }
 
 .widget.shortcut-widget-box:hover {
-    background: linear-gradient(90deg, #007e85 0%, #04a0a8ff 60%, #007e85 100%);
+    background: #956438;
+    /* background: linear-gradient(90deg, #007e85 0%, #04a0a8ff 60%, #007e85 100%); */
 }
 
 
@@ -158,7 +159,7 @@
 .links-widget-box .link-item:hover {
     color: #fff !important;
     /* background-size: 100% 100%; */
-    background-color: #007e85 !important;
+    background-color: #956438 !important;
     border-radius: 4px;
 }
 
@@ -451,8 +452,3 @@ use.like-icon {
     } */
 }
 
-.list-row {
-    /* .level-right {
-        display: none;
-    } */
-}
