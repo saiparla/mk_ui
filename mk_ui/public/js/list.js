@@ -1,213 +1,213 @@
 
-const sortselection = () => {
-    const filterflex = document.querySelector('.filter-section.flex');
-    if (!filterflex) return;
+// const sortselection = () => {
+//     const filterflex = document.querySelector('.filter-section.flex');
+//     if (!filterflex) return;
 
-    const filterselectors = filterflex.querySelectorAll('.sort-selector');
-    if (!filterselectors.length) return;
+//     const filterselectors = filterflex.querySelectorAll('.sort-selector');
+//     if (filterselectors.length === 0) return;
 
-    filterselectors.forEach(selector => {
-        const orderButton = selector.querySelector('.btn-order');
-        const ordertext = selector.querySelector('.sort-selector-button');
-        const dropdown = selector.querySelector('.dropdown-menu.dropdown-menu-right')
-        if (!orderButton) return;
-        orderButton.style.padding = '3px';
-        orderButton.style.marginRight = '2px';
-        orderButton.style.borderRadius = '5px 0px 0px 5px';
-        orderButton.style.boxShadow = '0px 0px 3px grey';
-        orderButton.addEventListener('mouseover', () => {
-            orderButton.style.backgroundColor = '#956438';
-            orderButton.style.color = '#fff';
-        })
-        orderButton.addEventListener('mouseout', () => {
-            orderButton.style.backgroundColor = '#007e85';
-            orderButton.style.color = '#fff';
-        })
+//     filterselectors.forEach(selector => {
+//         const orderButton = selector.querySelector('.btn-order');
+//         const ordertext = selector.querySelector('.sort-selector-button');
+//         const dropdown = selector.querySelector('.dropdown-menu.dropdown-menu-right')
+//         if (!orderButton) return;
+//         // orderButton.style.padding = '3px';
+//         // orderButton.style.marginRight = '2px';
+//         // orderButton.style.borderRadius = '5px 0px 0px 5px';
+//         // orderButton.style.boxShadow = '0px 0px 3px grey';
+//         // orderButton.addEventListener('mouseover', () => {
+//         //     orderButton.style.backgroundColor = '#956438';
+//         //     orderButton.style.color = '#fff';
+//         // })
+//         // orderButton.addEventListener('mouseout', () => {
+//         //     // orderButton.style.backgroundColor = '#007e85';
+//         //     orderButton.style.color = '#fff';
+//         // })
 
-        if (ordertext) {
-            ordertext.style.backgroundColor = '#007e85';
-            ordertext.style.color = '#fff';
-            ordertext.style.marginRight = '2px';
-            ordertext.style.borderRadius = '0px 5px 5px 0px';
-            ordertext.style.boxShadow = '0px 0px 3px grey';
-            ordertext.style.transition = '0.5s';
+//         if (ordertext) {
+//             // ordertext.style.backgroundColor = '#007e85';
+//             // ordertext.style.color = '#fff';
+//             // ordertext.style.marginRight = '2px';
+//             // ordertext.style.borderRadius = '0px 5px 5px 0px';
+//             // ordertext.style.boxShadow = '0px 0px 3px grey';
+//             // ordertext.style.transition = '0.5s';
 
-            ordertext.addEventListener('mouseover', () => {
-                ordertext.style.backgroundColor = '#956438';
-                ordertext.style.color = '#fff';
-            })
-            ordertext.addEventListener('mouseout', () => {
-                ordertext.style.backgroundColor = '#007e85';
-                ordertext.style.color = '#fff';
-            })
-            if (dropdown) {
-                const dropdownactions = dropdown.querySelectorAll('.dropdown-item.option')
-                if (dropdownactions) {
-                    dropdownactions.forEach((options) => {
-                        options.style.color = '#383838'
-                        options.style.transition = 'transform 0.3s'
-                        options.style.borderRadius = '2px';
-                        options.style.backfaceVisibility = "hidden";
-
-
-
-                        options.addEventListener('mouseover', () => {
-                            options.style.background = 'linear-gradient(90deg,#007e85 0%,#04a0a8ff 60%,#007e85 100%)'
-                            options.style.color = '#fff'
-                            options.style.transform = ' scale(1.01)'
-                            options.style.boxShadow = '0px 0px 5px grey'
-                        })
-                        options.addEventListener('mouseout', () => {
-                            options.style.background = 'transparent';
-                            options.style.color = '#383838';
-                            options.style.marginLeft = '0px'
-                            options.style.transform = 'scale(1)';
-                            options.style.boxShadow = 'none'
-                        })
-                    })
-                }
-                dropdown.style.backgroundColor = '#fff'
-                dropdown.style.borderRadius = '5px'
-                dropdown.style.boxShadow = '0px 0px 4px #888'
-            }
-        }
-
-        const sortselectorsvg = selector.querySelector('.sort-order');
-        if (sortselectorsvg) sortselectorsvg.style.display = 'none';
-
-        let img = orderButton.querySelector('img');
-        if (!img) {
-            img = document.createElement('img');
-            img.style.width = '20px';
-            img.style.height = '20px';
-            img.style.objectFit = 'contain';
-            img.style.marginLeft = '3px';
-            img.style.marginTop = '-2px';
-            orderButton.appendChild(img);
-        }
-
-        if (orderButton.dataset.sortState === undefined) {
-            orderButton.dataset.sortState = orderButton.getAttribute('data-value') || 'asc';
-        }
-
-        const updateSortIcon = () => {
-            const sortValue = orderButton.dataset.sortState;
-            if (sortValue === 'asc') {
-                img.src = '/assets/mk_ui/images/sort-asc.png';
-                img.alt = 'Ascending';
-            } else {
-                img.src = '/assets/mk_ui/images/sort-desc.png';
-                img.alt = 'Descending';
-            }
-            orderButton.style.backgroundColor = '#007e85';
-            orderButton.style.color = '#fff';
-        };
-
-        updateSortIcon();
-
-        // if (!orderButton.dataset.listenerAttached) {
-        //     orderButton.addEventListener('click', () => {
-        //         orderButton.dataset.sortState = orderButton.dataset.sortState === 'asc' ? 'desc' : 'asc';
-
-        //         updateSortIcon();
-        //     });
-        //     orderButton.dataset.listenerAttached = 'true';
-        // }
-    });
-};
-
-document.addEventListener("DOMContentLoaded", sortselection);
-
-const sortobserver = new MutationObserver(sortselection);
-sortobserver.observe(document.body, {
-    childList: true,
-    subtree: true
-});
-
-const filterselection = () => {
-    const filterflex = document.querySelector('.filter-section.flex');
-    if (!filterflex) return;
-
-    const filterselectors = filterflex.querySelector('.filter-selector');
-    if (!filterselectors.length) return;
-
-    const buttongroup = filterselectors.querySelector('.btn-group');
-    if (!buttongroup) return;
-    const buttons = buttongroup.querySelectorAll('button');
-    const button = buttongroup.querySelector('button');
-    if (button) {
-        button.style.transition = '0.5s'
-        button.addEventListener('mouseover', () => {
-            button.style.background = '#956438'
-            button.style.color = '#fff'
-
-        })
-        button.addEventListener('mouseout', () => {
-            button.style.background = '#007e85';
-            button.style.color = '#fff';
-
-
-        })
-    }
-    if (!buttons) return;
-    buttons.forEach((button, i) => {
-        button.style.background = '#007e85'
-        button.style.color = '#fff'
-        button.style.borderRadius = '5px'
-        button.style.marginRight = '2px'
-        button.style.boxShadow = '0px 0px 4px #888'
-        if (i === 0) {
-            button.style.borderRadius = '5px 0px 0px 5px'
-        }
-        if (i === 1) {
-            button.style.borderRadius = '0px 5px 5px 0px';
-            button.style.transition = '0.5s'
-            button.addEventListener('mouseover', () => {
-                button.style.background = '#956438'
-                button.style.color = '#fff'
-
-            })
-            button.addEventListener('mouseout', () => {
-                button.style.background = '#007e85';
-                button.style.color = '#fff';
-
-
-            })
-        }
-
-    })
-
-    const filtericon = filterselectors.querySelector('.filter-icon svg');
-    if (filtericon) {
-        filtericon.style.stroke = '#fff'
-        filtericon.style.strokeWidth = '1.5px'
-    }
-    const filterXicon = filterselectors.querySelector('.filter-x-button svg');
-    if (filterXicon) {
-        filterXicon.style.stroke = '#fff'
-        filterXicon.style.strokeWidth = '1.5px'
-        filterXicon.style.marginTop = '-2px'
-    }
-    const filterlabel = buttongroup.querySelector('.filter-label')
-    if (!filterlabel) return;
-    filterlabel.style.borderRadius = '50%';
-    filterlabel.style.color = '#956438';
-    filterlabel.style.boxShadow = '0px 0px 5px #888';
-    filterlabel.style.textAlign = 'center';
-    filterlabel.style.alignContent = 'center';
+//             // ordertext.addEventListener('mouseover', () => {
+//             //     ordertext.style.backgroundColor = '#956438';
+//             //     ordertext.style.color = '#fff';
+//             // })
+//             // ordertext.addEventListener('mouseout', () => {
+//             //     ordertext.style.backgroundColor = '#007e85';
+//             //     ordertext.style.color = '#fff';
+//             // })
+//             if (dropdown) {
+//                 const dropdownactions = dropdown.querySelectorAll('.dropdown-item.option')
+//                 if (dropdownactions) {
+//                     dropdownactions.forEach((options) => {
+//                         // options.style.color = '#383838'
+//                         options.style.transition = 'transform 0.3s'
+//                         options.style.borderRadius = '2px';
+//                         options.style.backfaceVisibility = "hidden";
 
 
 
+//                         options.addEventListener('mouseover', () => {
+//                             options.style.background = 'linear-gradient(90deg,#007e85 0%,#04a0a8ff 60%,#007e85 100%)'
+//                             options.style.color = '#fff'
+//                             options.style.transform = ' scale(1.01)'
+//                             options.style.boxShadow = '0px 0px 5px grey'
+//                         })
+//                         options.addEventListener('mouseout', () => {
+//                             options.style.background = 'transparent';
+//                             options.style.color = '#383838';
+//                             options.style.marginLeft = '0px'
+//                             options.style.transform = 'scale(1)';
+//                             options.style.boxShadow = 'none'
+//                         })
+//                     })
+//                 }
+//                 // dropdown.style.backgroundColor = '#fff'
+//                 // dropdown.style.borderRadius = '5px'
+//                 // dropdown.style.boxShadow = '0px 0px 4px #888'
+//             }
+//         }
 
-}
+//         // const sortselectorsvg = selector.querySelector('.sort-order');
+//         // if (sortselectorsvg) sortselectorsvg.style.display = 'none';
 
-document.addEventListener("DOMContentLoaded", filterselection);
+//         // let img = orderButton.querySelector('img');
+//         // if (!img) {
+//         //     img = document.createElement('img');
+//         //     img.style.width = '20px';
+//         //     img.style.height = '20px';
+//         //     img.style.objectFit = 'contain';
+//         //     img.style.marginLeft = '3px';
+//         //     img.style.marginTop = '-2px';
+//         //     orderButton.appendChild(img);
+//         // }
 
-const filterobserver = new MutationObserver(filterselection);
-filterobserver.observe(document.body, {
-    childList: true,
-    subtree: true
-});
+//         // if (orderButton.dataset.sortState === undefined) {
+//         //     orderButton.dataset.sortState = orderButton.getAttribute('data-value') || 'asc';
+//         // }
+
+//         // const updateSortIcon = () => {
+//         //     const sortValue = orderButton.dataset.sortState;
+//         //     if (sortValue === 'asc') {
+//         //         img.src = '/assets/mk_ui/images/sort-asc.png';
+//         //         img.alt = 'Ascending';
+//         //     } else {
+//         //         img.src = '/assets/mk_ui/images/sort-desc.png';
+//         //         img.alt = 'Descending';
+//         //     }
+//         //     orderButton.style.backgroundColor = '#007e85';
+//         //     orderButton.style.color = '#fff';
+//         // };
+
+//         // updateSortIcon();
+
+//         // if (!orderButton.dataset.listenerAttached) {
+//         //     orderButton.addEventListener('click', () => {
+//         //         orderButton.dataset.sortState = orderButton.dataset.sortState === 'asc' ? 'desc' : 'asc';
+
+//         //         updateSortIcon();
+//         //     });
+//         //     orderButton.dataset.listenerAttached = 'true';
+//         // }
+//     });
+// };
+
+// document.addEventListener("DOMContentLoaded", sortselection);
+
+// const sortobserver = new MutationObserver(sortselection);
+// sortobserver.observe(document.body, {
+//     childList: true,
+//     subtree: true
+// });
+
+// const filterselection = () => {
+//     const filterflex = document.querySelector('.filter-section.flex');
+//     if (!filterflex) return;
+
+//     const filterselectors = filterflex.querySelector('.filter-selector');
+//     if (!filterselectors.length) return;
+
+//     const buttongroup = filterselectors.querySelector('.btn-group');
+//     if (!buttongroup) return;
+//     const buttons = buttongroup.querySelectorAll('button');
+//     const button = buttongroup.querySelector('button');
+//     if (button) {
+//         button.style.transition = '0.5s'
+//         button.addEventListener('mouseover', () => {
+//             button.style.background = '#956438'
+//             button.style.color = '#fff'
+
+//         })
+//         button.addEventListener('mouseout', () => {
+//             button.style.background = '#007e85';
+//             button.style.color = '#fff';
+
+
+//         })
+//     }
+//     if (!buttons) return;
+//     buttons.forEach((button, i) => {
+//         button.style.background = '#007e85'
+//         button.style.color = '#fff'
+//         button.style.borderRadius = '5px'
+//         button.style.marginRight = '2px'
+//         button.style.boxShadow = '0px 0px 4px #888'
+//         if (i === 0) {
+//             button.style.borderRadius = '5px 0px 0px 5px'
+//         }
+//         if (i === 1) {
+//             button.style.borderRadius = '0px 5px 5px 0px';
+//             button.style.transition = '0.5s'
+//             button.addEventListener('mouseover', () => {
+//                 button.style.background = '#956438'
+//                 button.style.color = '#fff'
+
+//             })
+//             button.addEventListener('mouseout', () => {
+//                 button.style.background = '#007e85';
+//                 button.style.color = '#fff';
+
+
+//             })
+//         }
+
+//     })
+
+//     const filtericon = filterselectors.querySelector('.filter-icon svg');
+//     if (filtericon) {
+//         filtericon.style.stroke = '#fff'
+//         filtericon.style.strokeWidth = '1.5px'
+//     }
+//     const filterXicon = filterselectors.querySelector('.filter-x-button svg');
+//     if (filterXicon) {
+//         filterXicon.style.stroke = '#fff'
+//         filterXicon.style.strokeWidth = '1.5px'
+//         filterXicon.style.marginTop = '-2px'
+//     }
+//     const filterlabel = buttongroup.querySelector('.filter-label')
+//     if (!filterlabel) return;
+//     filterlabel.style.borderRadius = '50%';
+//     filterlabel.style.color = '#956438';
+//     filterlabel.style.boxShadow = '0px 0px 5px #888';
+//     filterlabel.style.textAlign = 'center';
+//     filterlabel.style.alignContent = 'center';
+
+
+
+
+// }
+
+// document.addEventListener("DOMContentLoaded", filterselection);
+
+// const filterobserver = new MutationObserver(filterselection);
+// filterobserver.observe(document.body, {
+//     childList: true,
+//     subtree: true
+// });
 
 
 const filterDialog = () => {
@@ -287,10 +287,6 @@ const standardfilters = () => {
         });
     };
 
-    // const filterDivs = document.querySelectorAll(
-    //     ".standard-filter-section.flex .form-group input"
-
-    // );
     const filterDivs = document.querySelectorAll(
         '.standard-filter-section.flex .form-group input:not([type="checkbox"])'
     );

@@ -388,7 +388,7 @@ use.like-icon {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .centered.splash img {
@@ -413,7 +413,7 @@ use.like-icon {
         conic-gradient(from 90deg at 10px 10px, transparent 90deg, #ffffff 0) 0 0/40px 40px no-repeat,
         conic-gradient(from -90deg at 30px 30px, transparent 90deg, #ffffff 0) 100% 100%/40px 40px no-repeat;
 
-    background-color: #007e85; 
+    background-color: #007e85;
     animation: l5 1s infinite linear;
 }
 
@@ -421,21 +421,27 @@ use.like-icon {
     0% {
         background-position: left 1px top 1px, 0 0, 0 0, 100% 100%;
     }
+
     16.67% {
         background-position: left 50% top 1px, 0 0, 0 0, 100% 100%;
     }
+
     33.33% {
         background-position: left 50% bottom 1px, 0 0, 0 0, 100% 100%;
     }
+
     50% {
         background-position: right 1px bottom 1px, 0 0, 0 0, 100% 100%;
     }
+
     66.67% {
         background-position: right 1px bottom 50%, 0 0, 0 0, 100% 100%;
     }
+
     83.33% {
         background-position: left 1px bottom 50%, 0 0, 0 0, 100% 100%;
     }
+
     100% {
         background-position: left 1px top 1px, 0 0, 0 0, 100% 100%;
     }
@@ -452,3 +458,132 @@ use.like-icon {
     } */
 }
 
+
+.filter-section.flex {
+    gap: 6px;
+    align-items: center;
+}
+
+
+.filter-selector .btn-group .btn {
+    background-color: #007e85;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.filter-selector .btn-group .btn:hover {
+    background-color: #956438;
+
+}
+
+.filter-selector .btn-group .btn:nth-child(2) {
+    background-color: #956438;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: 2px;
+}
+
+.filter-selector .btn-group .btn:nth-child(2):hover {
+    background-color: #007e85;
+}
+
+.filter-selector svg {
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.5px;
+    margin-top: -3px;
+}
+
+.filter-x-button {
+    background-color: #d9534f;
+}
+
+.filter-x-button:hover {
+    background-color: #b52b27;
+}
+
+.sort-selector .btn-group {
+    display: flex;
+}
+
+
+.sort-selector .btn-order {
+    background-color: #956438;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    box-shadow: 0 0 4px #888;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.sort-selector .btn-order:hover {
+    background-color: #007e85;
+}
+
+
+.sort-selector .sort-order {
+    display: none;
+}
+
+
+.sort-selector .btn-order::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.sort-selector .btn-order[data-value="asc"]::after {
+    background-image: url("/assets/mk_ui/images/sort-asc.png");
+    background-position: center 2px;
+}
+
+
+.sort-selector .btn-order[data-value="desc"]::after {
+    background-image: url("/assets/mk_ui/images/sort-desc.png");
+    background-position: center 2px;
+}
+
+.sort-selector-button {
+    background-color: #007e85 !important;
+    color: #fff !important;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    /* box-shadow: 0 0 4px #888; */
+    transition: background-color 0.3s ease;
+    margin-left: 1.5px !important;
+
+}
+
+.sort-selector-button:hover {
+    background-color: #956438 !important;
+}
+
+.dropdown-item.option {
+    border-radius: 2px;
+    backface-visibility: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: transparent;
+    color: #383838;
+    margin-left: 0;
+    box-shadow: none;
+}
+
+
+.dropdown-item.option:hover {
+    background: linear-gradient(90deg, #007e85 0%, #04a0a8ff 60%, #007e85 100%);
+    color: #fff;
+    transform: scale(1.01);
+    box-shadow: 0px 0px 5px grey;
+}
