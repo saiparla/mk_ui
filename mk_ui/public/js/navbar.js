@@ -11,23 +11,31 @@ frappe.call({
             if (company === "MK Eco Bricks") {
                 logotoggle = true;
             }
+            preloginNavbar();
+            postLoginNavbar();
         } else {
             localStorage.removeItem('company');
             logotoggle = false;
+            preloginNavbar();
+            postLoginNavbar();
         }
 
 
     },
     error: function () {
+
         localStorage.removeItem('company');
         logotoggle = false;
+        preloginNavbar();
+        postLoginNavbar();
 
     }
 });
-var company = localStorage.getItem('company');
-if (company === 'MK Eco Bricks') {
-    logotoggle = true
-}
+// var company = localStorage.getItem('company');
+// if (company === 'MK Eco Bricks') {
+//     logotoggle = true
+// }
+// console.log(logotoggle)
 
 
 const preloginNavbar = () => {
@@ -517,5 +525,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-preloginNavbar();
-postLoginNavbar();
+// preloginNavbar();
+// postLoginNavbar();
